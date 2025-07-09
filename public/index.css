@@ -1,0 +1,23 @@
+.cards{
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+}
+.box{
+    border: 1px solid;
+    text-align: justify;
+    height: 18vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 18vw;
+}
+.title{
+    text-align: center;
+}
+.heading_main{
+    text-align: center;
+}
+
