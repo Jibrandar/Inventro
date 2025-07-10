@@ -1,0 +1,62 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f6f7fb;;
+}
+
+h1, h2{
+    text-align: center;
+    padding: 12px;
+}
+h2{
+    margin-top: 2rem;
+    font-size: x-large;
+    background: linear-gradient(#8beee9, #c992ee);
+}
+
+.list table{
+    width: 80vw;
+    margin: auto;
+    border-collapse: collapse;
+    font-size: large;
+    margin-top: 2.5rem;
+
+}
+
+table th,table td{
+    text-align: center;
+    background-color: #fff;
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    
+}
+
+table th{
+    background-color: #eee;
+    font-size: larger;
+    font-weight: 600;
+}
+table td{
+    font-weight: 600;
+}
+
+ table tr:hover td {
+  background-color: #e6f7ff;
+  transition: all 0.1s ease-in-out;
+  cursor: pointer;
+}
+
+
+
+/* Icon button hover */
+.btn:hover {
+  background-color: #ddd;
+  border-radius: 5px;
+}
+.search{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}

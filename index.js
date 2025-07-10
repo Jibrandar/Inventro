@@ -33,6 +33,8 @@ app.get('/',(req,res)=>{
   let q2="select count(quantity) AS low_stock from products where quantity<?";
   let q3="select count(distinct category) AS total_categories from products ";
   let q4="select count(quantity) AS out_of_stock from products where quantity=?";
+  let q5="select * from products ORDER BY created_at DESC LIMIT 5 ";
+  let q6="select name,quantity from products where quantity<10 order by quantity ASC";
   let quantity=10;
   let outstock=0;
   
@@ -54,20 +56,44 @@ app.get('/',(req,res)=>{
         let tp=result3[0].total_categories;
         connection.query(q4,[outstock],(error4,result4)=>{
           let ots=result4[0].out_of_stock;
-          res.render('index.ejs',{data,lowqty,tp,ots});
-          
-        
-          
+          connection.query(q5,(error5,result5)=>{
+            if(error5){
+              res.send("error in db");
+            }
+            let products=result5;
+            connection.query(q6,(error6,result6)=>{
+              let stock=result6;
+              
+              res.render('index.ejs',{data,lowqty,tp,ots,products,stock});
+            })
+             })
+
         })
-        
-        
-      })
-      
-      
-      
-    })
+  })
+       })
     
     })
    
 })
 
+app.get('/list',(req,res)=>{
+  let name=req.query.q;
+  let q;
+  let values=[];
+  if(name){
+    q="select * from products where name like ?";
+    values.push(`%${name}%`)
+  }
+  else{
+    q="select * from products";
+  }
+  connection.query(q,values,(error,result)=>{
+    let products=result;
+    res.render("list.ejs",{products,name});
+  })
+})
+
+
+app.get('/add',(req,res)=>{
+    res.render('add.ejs');
+})
