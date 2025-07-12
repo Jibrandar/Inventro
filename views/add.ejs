@@ -4,10 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/add.css">
 </head>
 <body>
     <div class="main">
         <h1>ADD PRODUCT</h1>
+        <div class="btns"><a href="http://localhost:8080" class="add-btn">DASHBOARD</a>
+            <a href="http://localhost:8080/list" class="add-btn">INVENTORY</a></div>
+            
+        
         <div class="add">
             <form action="/list" method="post">
             <label for="name">NAME OF THE PRODUCT</label>
@@ -18,11 +23,13 @@
             <input type="number" name="quantity" id="quantity">
             <label for="price">PRICE OF THE PRODUCT</label>
             <input type="number" name="price" id="price" step="0.01">
-            <input type="submit" value="ADD">
+            <input type="submit" value="ADD" class="btn">
 
         </form>
         </div>
         
     </div>
+    <script src="/add.js"></script>
+
 </body>
 </html>

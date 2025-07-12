@@ -97,3 +97,14 @@ app.get('/list',(req,res)=>{
 app.get('/add',(req,res)=>{
     res.render('add.ejs');
 })
+
+app.post('/list',(req,res)=>{
+  let{name,category,quantity,price}=req.body;
+  let id=uuidv4();
+  let q="insert into products(id,name,category,quantity,price) values (?,?,?,?,?)";
+  connection.query(q,[id,name,category,quantity,price],(error,result)=>{
+    res.redirect('/list');
+  })
+  
+
+})

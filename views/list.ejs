@@ -13,51 +13,46 @@
         <h1>MALIK MOBILE CARE</h1>
         <h2>IVENTORY</h2>
         <div class="list">
-            <div class="search">
+            <div class="search" tabindex="0">
                 <form action="/list" method="get">
-                <input type="text" placeholder="Search" name="q" value="<%= name %>">
-                <button type="submit"> <i class="fa-brands fa-searchengin"></i></button>
+                <input type="text" placeholder="Search" name="q" value="<%= name %>" class="searchbar">
+                <button class="sear" type="submit"> <i class="fa-brands fa-searchengin fa-lg"></i></button>
                 
             </form>
-            <button>ADD NEW PRODUCT</button>
+            <a href="http://localhost:8080/add" class="add-btn">ADD NEW PRODUCT</a>
+            <a href="http://localhost:8080" class="add-btn">DASHBOARD</a>
 
             </div>
             
             <table>
-                <% if (products.length===0){ %>
-                    <tr>
-                        <td colspan="5" style="text-align:center; color: red;">No items found</td>
-                    </tr>
+    <thead>
+        <tr>
+            <th>NAME</th>
+            <th>CATEGORY</th>
+            <th>QTY</th>
+            <th>PRICE</th>
+            <th>EDIT</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% for (product of products) { %>
+        <tr>
+            <td><%= product.name %></td>
+            <td><%= product.category %></td>
+            <td><%= product.quantity %></td>
+            <td><%= product.price %></td>
+            <td>
+                <button class="btn"><i class="fa-solid fa-pen-to-square"></i></button>
+                <button class="btn"><i class="fa-solid fa-trash"></i></button>
+            </td>
+        </tr>
+        <% } %>
+    </tbody>
+</table>
 
-               <% } else {%> 
-               
-                <tr>
-                    <th>NAME</th>
-                    <th>CATEGORY</th>
-                    <th>QTY</th>
-                    <th>PRICE</th>
-                    <th>EDIT</th>
-                    
-                    
-                </tr>
-                <% for (product of products) {%>
-                    <tr>
-                        <td><%= product.name %></td>
-                        <td><%= product.category %></td>
-                        <td><%=  product.quantity%></td>
-                        <td><%= product.price %></td>
-                        <td><button class="btn"><i class="fa-solid fa-pen-to-square"></i></button> <button class="btn"><i class="fa-solid fa-trash"></i></button></td>
-                        
-                    </tr>
-
-                    <% } %>
-       
-
-
-               <% } %>
-                     </table>
             
         </div>
     </div>
+    <script src="/list.js"></script>
 </body>
 </html>
