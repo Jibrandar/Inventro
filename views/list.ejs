@@ -25,6 +25,12 @@
             </div>
             
             <table>
+                
+                <% if (products.length === 0) { %>
+  <tr>
+    <td colspan="5" style="text-align:center; color: red;">No items found</td>
+  </tr>
+<% } else { %>
     <thead>
         <tr>
             <th>NAME</th>
@@ -42,12 +48,13 @@
             <td><%= product.quantity %></td>
             <td><%= product.price %></td>
             <td>
-                <button class="btn"><i class="fa-solid fa-pen-to-square"></i></button>
+                <button class="btn"><a href="http://localhost:8080/edit/<%= product.id %>"  style="color: black;" ><i class="fa-solid fa-pen-to-square"></i></a></i></button>
                 <button class="btn"><i class="fa-solid fa-trash"></i></button>
             </td>
         </tr>
         <% } %>
     </tbody>
+    <% } %>
 </table>
 
             

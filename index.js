@@ -108,3 +108,32 @@ app.post('/list',(req,res)=>{
   
 
 })
+
+app.get('/edit/:id',(req,res)=>{
+  let {id}= req.params // removes colon if it exists
+
+  let q="select * from products where id =?";
+connection.query(q,id,(error,result)=>{
+  let product=result[0];
+  res.render('edit.ejs',{product});
+})
+
+
+  
+
+})
+
+app.patch('/edit/:id',(req,res)=>{
+  let {id}=req.params;
+  let{name,price,quantity}=req.body;
+  console.log(id);
+
+  let q="update products set name =? ,price=? ,quantity=? where id =?";
+  connection.query(q,[name,price,quantity,id],(error,result)=>{
+    res.redirect('/list');
+
+    
+  });
+  
+
+})
