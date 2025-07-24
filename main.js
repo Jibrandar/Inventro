@@ -14,6 +14,32 @@ app.use(express.json());
 const port=8080;
 const { app: electronApp, BrowserWindow, dialog } = require('electron');
 const { autoUpdater } = require('electron-updater');
+const fs = require('fs');
+const path = require('path');
+
+const MAX_DAYS = 180; // change to any duration
+const INSTALL_INFO_PATH = path.join(electronApp.getPath('userData'), 'install-info.json');
+
+function getOrCreateInstallDate() {
+  if (!fs.existsSync(INSTALL_INFO_PATH)) {
+    const installData = {
+      installedAt: new Date().toISOString()
+    };
+    fs.writeFileSync(INSTALL_INFO_PATH, JSON.stringify(installData));
+    return new Date(installData.installedAt);
+  } else {
+    const data = JSON.parse(fs.readFileSync(INSTALL_INFO_PATH, 'utf8'));
+    return new Date(data.installedAt);
+  }
+}
+
+function isTrialExpired() {
+  const installDate = getOrCreateInstallDate();
+  const today = new Date();
+  const diffTime = today - installDate;
+  const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+  return diffDays > MAX_DAYS;
+}
 
 function createWindow() {
   const win = new BrowserWindow({
@@ -25,9 +51,9 @@ function createWindow() {
     }
   });
 
-  win.loadURL('http://localhost:8080'); // Your Express app runs here
+  win.loadURL('http://localhost:8080');
 
-  // ✅ Now this is inside, and win is available
+  // ✅ Auto-updater
   autoUpdater.checkForUpdatesAndNotify();
 
   autoUpdater.on('update-available', () => {
@@ -53,7 +79,17 @@ function createWindow() {
   });
 }
 
+// ✅ Check trial before creating window
 electronApp.whenReady().then(() => {
+  if (isTrialExpired()) {
+    dialog.showErrorBox(
+      'Trial Expired',
+      `Your Inventra trial has expired after ${MAX_DAYS} days.\nPlease contact support to continue using the software.`
+    );
+    electronApp.quit();
+    return;
+  }
+
   createWindow();
 
   electronApp.on('activate', () => {
