@@ -14,31 +14,15 @@ app.use(express.json());
 const port=8080;
 const { app: electronApp, BrowserWindow, dialog } = require('electron');
 const { autoUpdater } = require('electron-updater');
-const fs = require('fs');
-const path = require('path');
 
-const MAX_DAYS = 30; // change to any duration
-const INSTALL_INFO_PATH = path.join(electronApp.getPath('userData'), 'install-info.json');
+const expiryDate = new Date('2026-01-24'); // 6-month trial
 
-function getOrCreateInstallDate() {
-  if (!fs.existsSync(INSTALL_INFO_PATH)) {
-    const installData = {
-      installedAt: new Date().toISOString()
-    };
-    fs.writeFileSync(INSTALL_INFO_PATH, JSON.stringify(installData));
-    return new Date(installData.installedAt);
-  } else {
-    const data = JSON.parse(fs.readFileSync(INSTALL_INFO_PATH, 'utf8'));
-    return new Date(data.installedAt);
-  }
-}
-
-function isTrialExpired() {
-  const installDate = getOrCreateInstallDate();
+function checkExpiryDate() {
   const today = new Date();
-  const diffTime = today - installDate;
-  const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-  return diffDays > MAX_DAYS;
+  if (today > expiryDate) {
+    dialog.showErrorBox('License Expired', 'This version of Inventra has expired. Please contact support.');
+    electronApp.quit(); // FIXED: was `app.quit()` but you renamed it to `electronApp`
+  }
 }
 
 function createWindow() {
@@ -51,9 +35,8 @@ function createWindow() {
     }
   });
 
-  win.loadURL('http://localhost:8080');
+  win.loadURL('http://localhost:8080'); // Your Express app
 
-  // ✅ Auto-updater
   autoUpdater.checkForUpdatesAndNotify();
 
   autoUpdater.on('update-available', () => {
@@ -79,17 +62,8 @@ function createWindow() {
   });
 }
 
-// ✅ Check trial before creating window
 electronApp.whenReady().then(() => {
-  if (isTrialExpired()) {
-    dialog.showErrorBox(
-      'Trial Expired',
-      `Your Inventra trial has expired after ${MAX_DAYS} days.\nPlease contact support to continue using the software.`
-    );
-    electronApp.quit();
-    return;
-  }
-
+  checkExpiryDate(); // ✅ check before launching the window
   createWindow();
 
   electronApp.on('activate', () => {
@@ -100,9 +74,6 @@ electronApp.whenReady().then(() => {
 electronApp.on('window-all-closed', () => {
   if (process.platform !== 'darwin') electronApp.quit();
 });
-
-
-
 
 
 
