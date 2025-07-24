@@ -1,0 +1,64 @@
+{
+  "name": "inventra",
+  "version": "1.0.0",
+  "description": "Inventory Management App built with Electron and Express",
+  "author": "Jibran Bin Ajaz",
+  "main": "main.js",
+  "build": {
+    "appId": "com.inventra.app",
+    "productName": "Inventra",
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "Jibrandar",
+        "repo": "Inventro"
+      }
+    ],
+    "files": [
+      "views/**/*",
+      "public/**/*",
+      "main.js",
+      "index.js",
+      "package.json",
+      "!node_modules/.cache/**"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": true,
+      "allowToChangeInstallationDirectory": true
+    }
+  },
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "electron-updater": "^6.6.2",
+    "express": "^5.1.0",
+    "express-ejs-layouts": "^2.5.1",
+    "method": "^2.0.0",
+    "method-override": "^3.0.0",
+    "mysql2": "^3.14.1",
+    "override": "^0.0.1",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "electron": "^37.2.1",
+    "electron-builder": "^26.0.12"
+  },
+  "scripts": {
+    "start": "electron .",
+    "dev": "nodemon index.js",
+    "build": "electron-builder"
+  }
+}

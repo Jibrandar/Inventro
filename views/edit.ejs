@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/edit.css">
+</head>
+<body>
+    <div class="main">
+        <h1>EDIT PRODUCTS</h1>
+        <form action="/edit/<%= product.id %>?_method=PATCH" method="post">
+            <label for="name">NAME OF THE PRODUCT</label>
+            <input type="text" name="name" id="name" placeholder="name" value="<%= product.name %>">
+            <label for="category">CATEGORY OF THE PRODUCT</label>
+            <input type="text" value="<%= product.category %>" readonly>
+            <label for="price">PRICE OF THE PRODUCT</label>
+            <input type="number" name="price" id="price" placeholder="Price" value="<%= product.price %>">
+            <label for="quantity">QUANTITY OF THE PRODUCT</label>
+            <input type="number" name="quantity" id="quantity" placeholder="Quantity" value="<%= product.quantity %>">
+            <input type="submit" value="EDIT">
+        </form>
+
+        
+    </div>
+    <%- include('partials/footer') %>
+
+</body>
+</html>

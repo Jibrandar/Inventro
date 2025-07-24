@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+    <h1 class="title">MALIK MOBILE CARE</h1>
+    <div class="main">
+        <h2 class="heading_main">Dashboard</h2>
+        <div class="cards">
+            <div class="box"><span>Total</span><span>Products</span>
+            <span><%= data %></span></div>
+            <div class="box"><span>LOW STOCK </span><span>ITEMS</span> <span><%= lowqty %></span></div>
+            <div class="box"><SPAn>TOTAL</SPAn><SPan>CATEGORIES</SPan> <span><%= tp %></span></div>
+            <div class="box"><SPAn>OUT-OF-STOCK</SPAn> <SPAn>ITEMS</SPAn> <span><%= ots %></span></div>
+        </div>
+        <div class="btn">
+            <a href="http://localhost:8080/add" class="btn-button">ADD PRODUCT</a>
+            <a href="http://localhost:8080/list" class="btn-button">VIEW INVENTORY</a>
+        </div>
+
+        <div class="recent">
+            <h3>Recent Products</h3>
+            <table>
+                <tr>
+                    <th>
+                        Name
+                    </th>
+                    <th>Category</th>
+                    <th>Qty</th>
+                    <th>Price</th>
+                </tr>
+                <% for (product of products) { %>
+                    <tr>
+                        <td><%= product.name %></td>
+                        <td><%= product.category %></td>
+                        <td><%= product.quantity %></td>
+                        <td><%= product.price %></td>
+                    </tr>
+                    <% } %>
+            </table>
+        </div>
+            <h3>Low Stock Alert <i class="fa-solid fa-triangle-exclamation"></i> </h3>
+            <div class="Stock_alert">
+                <h5>Warning: <%= lowqty %> products are low on stock</h5>
+                <ul>
+                    <% for (product of stock) {%>
+
+                        <li><%= product.name %> <span>(qty : <%= product.quantity %>)</span></li>
+                    <% } %>
+                </ul>
+
+
+
+            </div>
+        </div>
+
+    </div>
+    <%- include('partials/footer') %>
+
+</body>
+</html>

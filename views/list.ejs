@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/list.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+<body>
+    <div class="main">
+        <h1>MALIK MOBILE CARE</h1>
+        <h2>IVENTORY</h2>
+        <div class="list">
+            <div class="search" tabindex="0">
+                <form action="/list" method="get">
+                <input type="text" placeholder="Search" name="q" value="<%= name %>" class="searchbar">
+                <button class="sear" type="submit"> <i class="fa-brands fa-searchengin fa-lg"></i></button>
+                
+            </form>
+            <a href="http://localhost:8080/add" class="add-btn">ADD NEW PRODUCT</a>
+            <a href="http://localhost:8080" class="add-btn">DASHBOARD</a>
+
+            </div>
+            
+            <table>
+                
+                <% if (products.length === 0) { %>
+  <tr>
+    <td colspan="5" style="text-align:center; color: red;">No items found</td>
+  </tr>
+<% } else { %>
+    <thead>
+        <tr>
+            <th>NAME</th>
+            <th>CATEGORY</th>
+            <th>QTY</th>
+            <th>PRICE</th>
+            <th>EDIT</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% for (product of products) { %>
+        <tr>
+            <td><%= product.name %></td>
+            <td><%= product.category %></td>
+            <td><%= product.quantity %></td>
+            <td><%= product.price %></td>
+            <td>
+                <button class="btn"><a href="http://localhost:8080/edit/<%= product.id %>"  style="color: black;" ><i class="fa-solid fa-pen-to-square"></i></a></i></button>
+                    <form action="/list/<%= product.id %>?_method=DELETE" method="post" style="display: inline;">
+                <button class="btn" type="submit"><i class="fa-solid fa-trash"></i></button>
+
+                    
+                </form>
+            </td>
+        </tr>
+        <% } %>
+    </tbody>
+    <% } %>
+</table>
+
+            
+        </div>
+    </div>
+    <%- include('partials/footer') %>
+
+    <script src="/list.js"></script>
+</body>
+</html>

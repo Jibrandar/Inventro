@@ -1,0 +1,129 @@
+body{
+    padding: 0;
+    margin: 0;
+    color: black;
+    background-color: #f6f7fb;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.cards{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s ease-in-out;
+    flex-wrap: wrap;
+    
+    
+}
+.box{
+    border: 1px solid;
+    text-align: justify;
+    height: 18vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 18vw;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.13);
+    transition: 0.3s ease-in-out;
+    background-color: #fff;
+    font-weight: 500;
+    font-weight: 1rem;
+}
+.box:hover{
+    transform: scale(1.05);
+    transition: 0.3s ease-in-out;
+    
+}
+/* .cards:hover{
+    gap: 30px;
+    transition: 0.3s ease-in-out;
+
+    
+} */
+.title{
+    text-align: center;
+}
+.heading_main{
+    text-align: center;
+}
+.btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    margin-top: 2.5rem ;
+    
+}
+.btn-button{
+    width: 150px;
+    padding: 12px 18px;
+    
+    text-align: center;
+    background-color: #1abc9c;
+    
+    text-decoration: none;
+    border-radius: 12px;
+    cursor: pointer;
+    color: white;
+    font-weight: 600;
+}
+.btn-button:hover{
+    transform: scale(1.05);
+    transition: all 0.3s ease-in-out;
+    background-color: #16a085;
+    
+    
+}
+h3{
+    text-align: center;
+    font-size: 1.3rem;
+    margin-top: 2.1rem;
+}
+.recent table {
+    width: 80%;
+    margin: auto;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+table th, table td {
+    padding: 12px;
+    text-align: center;
+    background-color: white;
+    border-bottom: 1px solid #ddd;
+}
+
+table th {
+    background-color: #eee;
+    font-weight: 600;
+}
+
+.Stock_alert {
+    margin: 30px auto;
+    width: 80vw;
+    background-color: #fff3cd;
+    padding: 20px;
+    border-left: 5px solid #f0ad4e;
+    border-radius: 8px;
+}
+
+.Stock_alert h5 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #856404;
+}
+
+.Stock_alert ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.Stock_alert li {
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
