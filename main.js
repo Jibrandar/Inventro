@@ -17,7 +17,7 @@ const { autoUpdater } = require('electron-updater');
 const fs = require('fs');
 const path = require('path');
 
-const MAX_DAYS = 180; // change to any duration
+const MAX_DAYS = 30; // change to any duration
 const INSTALL_INFO_PATH = path.join(electronApp.getPath('userData'), 'install-info.json');
 
 function getOrCreateInstallDate() {
