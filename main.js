@@ -65,6 +65,7 @@ function createWindow() {
 electronApp.whenReady().then(() => {
   checkExpiryDate(); // ✅ check before launching the window
   createWindow();
+  autoUpdater.checkForUpdatesAndNotify();
 
   electronApp.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
