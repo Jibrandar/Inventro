@@ -1,6 +1,6 @@
 {
   "name": "inventra",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Inventory Management App built with Electron and Express",
   "author": "Jibran Bin Ajaz",
   "main": "main.js",
