@@ -12,7 +12,8 @@ app.use(express.static(path.join(__dirname,'public')));
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 const port=8080;
-const { app: electronApp, BrowserWindow } = require('electron');
+const { app: electronApp, BrowserWindow, dialog } = require('electron');
+const { autoUpdater } = require('electron-updater');
 
 function createWindow() {
   const win = new BrowserWindow({
@@ -25,11 +26,35 @@ function createWindow() {
   });
 
   win.loadURL('http://localhost:8080'); // Your Express app runs here
+
+  // ✅ Now this is inside, and win is available
+  autoUpdater.checkForUpdatesAndNotify();
+
+  autoUpdater.on('update-available', () => {
+    dialog.showMessageBox(win, {
+      type: 'info',
+      title: 'Update Available',
+      message: 'A new update is available. It will be downloaded in the background.',
+    });
+  });
+
+  autoUpdater.on('update-downloaded', () => {
+    dialog.showMessageBox(win, {
+      type: 'info',
+      title: 'Install Update',
+      message: 'Update downloaded. App will quit and install now.',
+    }).then(() => {
+      autoUpdater.quitAndInstall();
+    });
+  });
+
+  autoUpdater.on('error', (err) => {
+    console.error('Update error:', err);
+  });
 }
 
 electronApp.whenReady().then(() => {
   createWindow();
-  autoUpdater.checkForUpdatesAndNotify();
 
   electronApp.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
@@ -39,16 +64,11 @@ electronApp.whenReady().then(() => {
 electronApp.on('window-all-closed', () => {
   if (process.platform !== 'darwin') electronApp.quit();
 });
-const { autoUpdater } = require('electron-updater');
 
-autoUpdater.on('update-available', () => {
-  console.log('Update available');
-});
 
-autoUpdater.on('update-downloaded', () => {
-  console.log('Update downloaded, will install now');
-  autoUpdater.quitAndInstall();
-});
+
+
+
 
 
 
