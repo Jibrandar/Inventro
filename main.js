@@ -29,6 +29,7 @@ function createWindow() {
 
 electronApp.whenReady().then(() => {
   createWindow();
+  autoUpdater.checkForUpdatesAndNotify();
 
   electronApp.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
@@ -49,10 +50,7 @@ autoUpdater.on('update-downloaded', () => {
   autoUpdater.quitAndInstall();
 });
 
-app.whenReady().then(() => {
-  createWindow();
-  autoUpdater.checkForUpdatesAndNotify();
-});
+
 
 // Create the connection to database
 const connection = mysql.createConnection({
