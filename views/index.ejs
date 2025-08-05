@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 <body>
-    <h1 class="title">S.A SPARE PARTS</h1>
+    <h1 class="title"><%= localStoreName %></h1>
     <div class="main">
         <h2 class="heading_main">Dashboard</h2>
         <div class="cards">
@@ -21,6 +21,16 @@
         <div class="btn">
             <a href="http://localhost:8080/add" class="btn-button">ADD PRODUCT</a>
             <a href="http://localhost:8080/list" class="btn-button">VIEW INVENTORY</a>
+            <a href="http://localhost:8080/billing" class="btn-button">CREATE BILL</a>
+            <a href="http://localhost:8080/bills" class="btn-button">VIEW BILLS</a>
+            <form action="/retry-backups" method="POST">
+  <button type="submit" class="retry-button" >
+    RETRY BACKUP
+  </button>
+</form>
+
+            
+
         </div>
 
         <div class="recent">
@@ -31,6 +41,7 @@
                         Name
                     </th>
                     <th>Category</th>
+                    <th>Company</th>
                     <th>Qty</th>
                     <th>Price</th>
                 </tr>
@@ -38,6 +49,7 @@
                     <tr>
                         <td><%= product.name %></td>
                         <td><%= product.category %></td>
+                        <td><%= product.company %></td>
                         <td><%= product.quantity %></td>
                         <td><%= product.price %></td>
                     </tr>

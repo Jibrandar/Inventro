@@ -7,10 +7,20 @@
     <link rel="stylesheet" href="/add.css">
 </head>
 <body>
+    <nav style="display: flex; justify-content: space-between; align-items: center; padding: 15px 25px; background-color: #0d6efd; color: white; font-family: sans-serif;">
+  <!-- Left button -->
+  <div>
+    <a href="http://localhost:8080" style="text-decoration: none; background: white; color: #0d6efd; padding: 8px 16px; border-radius: 4px; font-weight: bold;">Dashboard</a>
+  </div>
+
+  <!-- Right button -->
+  <div>
+    <a href="http://localhost:8080/list" style="text-decoration: none; background: white; color: #0d6efd; padding: 8px 16px; border-radius: 4px; font-weight: bold;">Inventory</a>
+  </div>
+</nav>
     <div class="main">
         <h1>ADD PRODUCT</h1>
-        <div class="btns"><a href="http://localhost:8080" class="add-btn">DASHBOARD</a>
-            <a href="http://localhost:8080/list" class="add-btn">INVENTORY</a></div>
+        
             
         
         <div class="add">
@@ -19,6 +29,8 @@
             <input type="text" name="name" id="name" required>
             <label for="category">CATEGORY OF THE PRODUCT</label>
             <input type="text" name="category" id="category" required>
+            <label for="company">COMPANY</label>
+            <input type="text" name="company" id="company" required>
             <label for="quantity">QUANTITY OF THE PRODUCT</label>
             <input type="number" name="quantity" id="quantity">
             <label for="price">PRICE OF THE PRODUCT</label>

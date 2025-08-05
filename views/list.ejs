@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="main">
-        <h1>MALIK MOBILE CARE</h1>
+        <h1><%= localStoreName %></h1>
         <h2>IVENTORY</h2>
         <div class="list">
             <div class="search" tabindex="0">
@@ -35,6 +35,7 @@
         <tr>
             <th>NAME</th>
             <th>CATEGORY</th>
+            <th>COMPANY</th>
             <th>QTY</th>
             <th>PRICE</th>
             <th>EDIT</th>
@@ -45,6 +46,7 @@
         <tr>
             <td><%= product.name %></td>
             <td><%= product.category %></td>
+            <td><%= product.company %></td>
             <td><%= product.quantity %></td>
             <td><%= product.price %></td>
             <td>

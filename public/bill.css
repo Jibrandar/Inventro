@@ -1,0 +1,140 @@
+
+  @media print {
+  body {
+    background: white;
+    padding: 0;
+    margin: 0;
+  }
+
+  nav {
+    display: none !important;
+  }
+
+  .bill-container {
+    box-shadow: none;
+    border: none;
+    padding: 0;
+    max-width: 100%;
+  }
+
+  button,
+  .footer {
+    display: none;
+  }
+
+  .table th,
+  .table td {
+    font-size: 13px;
+    padding: 6px;
+  }
+
+  .header h2 {
+    font-size: 20px;
+  }
+
+  .details p {
+    font-size: 13px;
+  }
+}
+
+
+/* Base styling */
+body {
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f6f9;
+  color: #1f2937;
+  padding: 0px;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.bill-container {
+  max-width: 850px;
+  margin: auto;
+  background: #ffffff;
+  padding: 36px;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 18px;
+  margin-bottom: 32px;
+}
+
+.header h2 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #3b82f6;
+  margin: 0 0 8px 0;
+}
+
+.header p {
+  margin: 4px 0;
+  font-size: 14px;
+  color: #374151;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 32px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.table thead {
+  background-color: #3b82f6;
+  color: white;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+}
+
+.table th,
+.table td {
+  padding: 14px 12px;
+  border: 1px solid #e5e7eb;
+  font-size: 14px;
+  text-align: left;
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: #f9fafb;
+}
+
+.total-row {
+  background-color: #f3f4f6;
+  font-weight: 600;
+}
+
+.total-row td {
+  font-size: 15px;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+button {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: #2563eb;
+}

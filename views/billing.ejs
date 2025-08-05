@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Generate Bill</title>
+  <link rel="stylesheet" href="generate-bill.css">
+</head>
+<body>
+  <nav class="pos" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 25px; background-color: #0d6efd; color: white; font-family: sans-serif; position: relative; bottom: 40px;">
+  <!-- Left button -->
+  <div>
+    <a href="http://localhost:8080" style="text-decoration: none; background: white; color: #0d6efd; padding: 8px 16px; border-radius: 4px; font-weight: bold;">Dashboard</a>
+  </div>
+
+  <!-- Right button -->
+  <div>
+    <a href="http://localhost:8080/list" style="text-decoration: none; background: white; color: #0d6efd; padding: 8px 16px; border-radius: 4px; font-weight: bold;">Inventory</a>
+  </div>
+</nav>
+
+
+  <div class="container">
+    <h2>Generate Bill</h2>
+
+    <form action="/billing" method="POST">
+      <div class="form-group">
+        <label for="customer_name">Customer Name:</label>
+        <input type="text" id="customer_name" name="customer_name" required>
+        <label for="adress">Address:</label>
+        <input type="text" name="address" id="adress">
+        <label for="mobile">Phone Number:</label>
+        <input type="text" name="mobile" id="mobile">
+      </div>
+
+      <div class="form-group">
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" required>
+      </div>
+
+      <h3>Products</h3>
+
+      <!-- Search Bar -->
+      <input type="text" id="productSearch" placeholder="Search products..." class="search-bar">
+
+      <!-- Product List -->
+      <div id="productList">
+        <% products.forEach(product => { %>
+          <div class="product-row">
+            <label>
+              <input type="checkbox" name="product_<%= product.id %>">
+              <span class="product-name"><%= product.name %></span>
+<span class="company-name">(<%= product.company %>)</span> - ₹<%= product.price %>
+
+            </label>
+            <input type="number" name="qty_<%= product.id %>" placeholder="Qty" min="1">
+          </div>
+        <% }) %>
+      </div>
+
+      <button type="submit">Generate Bill</button>
+    </form>
+  </div>
+
+  <!-- Search Functionality -->
+  <script>
+    document.getElementById('productSearch').addEventListener('input', function () {
+      const search = this.value.toLowerCase();
+      const rows = document.querySelectorAll('#productList .product-row');
+
+      rows.forEach(row => {
+        const productName = row.querySelector('.product-name').innerText.toLowerCase();
+        row.style.display = productName.includes(search) ? 'flex' : 'none';
+      });
+    });
+  </script>
+</body>
+</html> 

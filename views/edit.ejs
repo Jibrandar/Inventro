@@ -7,6 +7,17 @@
     <link rel="stylesheet" href="/edit.css">
 </head>
 <body>
+    <nav style="display: flex; justify-content: space-between; align-items: center; padding: 15px 25px; background-color: #0d6efd; color: white; font-family: sans-serif;">
+  <!-- Left button -->
+  <div>
+    <a href="http://localhost:8080" style="text-decoration: none; background: white; color: #0d6efd; padding: 8px 16px; border-radius: 4px; font-weight: bold;">Dashboard</a>
+  </div>
+
+  <!-- Right button -->
+  <div>
+    <a href="http://localhost:8080/list" style="text-decoration: none; background: white; color: #0d6efd; padding: 8px 16px; border-radius: 4px; font-weight: bold;">Inventory</a>
+  </div>
+</nav>
     <div class="main">
         <h1>EDIT PRODUCTS</h1>
         <form action="/edit/<%= product.id %>?_method=PATCH" method="post">

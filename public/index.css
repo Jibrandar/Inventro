@@ -71,6 +71,22 @@ body{
     color: white;
     font-weight: 600;
 }
+.retry-button{
+    
+    padding: 15px 18px;
+    
+    
+    background-color: #1abc9c;
+    
+    
+    border-radius: 12px;
+    
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    border: 0px;
+}
+
 .btn-button:hover{
     transform: scale(1.05);
     transition: all 0.3s ease-in-out;
@@ -78,6 +94,14 @@ body{
     
     
 }
+.retry-button:hover{
+    transform: scale(1.05);
+    transition: all 0.3s ease-in-out;
+    background-color: #16a085;
+    
+    
+}
+
 h3{
     text-align: center;
     font-size: 1.3rem;
@@ -126,4 +150,59 @@ table th {
 .Stock_alert li {
     font-size: 1rem;
     margin-bottom: 5px;
+}
+@media (max-width: 1024px) {
+    .box {
+        width: 40vw;
+        height: auto;
+    }
+
+    .btn {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .btn-button {
+        width: 80%;
+        max-width: 250px;
+    }
+
+    .cards {
+        justify-content: center;
+    }
+
+    .recent table {
+        width: 95%;
+    }
+
+    .Stock_alert {
+        width: 95%;
+    }
+}
+
+@media (max-width: 600px) {
+    .box {
+        width: 90vw;
+    }
+
+    h3 {
+        font-size: 1.1rem;
+    }
+
+    .btn-button {
+        padding: 10px 14px;
+        font-size: 0.95rem;
+    }
+
+    .btn {
+        gap: 15px;
+    }
+
+    .Stock_alert h5 {
+        font-size: 1rem;
+    }
+
+    .Stock_alert li {
+        font-size: 0.9rem;
+    }
 }

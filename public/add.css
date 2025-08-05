@@ -1,100 +1,82 @@
-body{
-    padding: 0;
-    margin: 0;
-     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
-    background-color: #f6f7fb;
-     
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f6f7fb;
+  color: #333;
 }
 
-.main h1{
-    text-align: center;
-    margin: 30px 0px;
-}
-form{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-    margin: 20px 0px;
-}
-.add{
-    border: 1px solid black;
-    width: 80vw;
-    margin: auto;
-    background-color: #EAEFEF;
-    border: 0px;
-    padding: 12px;
-    border-radius: 15px;
-    box-sizing: content-box;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.493);
-    
-}
-input{
-    padding: 12px 24px;
-    width: 300px;
-    border-radius: 15px;
-    outline-color: #EAEBD0;
-    border: 1px solid black;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
-    background-color: #d7e8f0;
-    transition:all 0.1s ease-in-out;
-    font-size: large;
-    text-align: center;
-}
-input:focus{
-    background-color: white;
-}
-input:hover{
-    transform:scale(1.05);
-    transition: all 0.2s ease-in-out;
-    background-color: white;
-
-
-    
-
-}
-label{
-    font-weight: 600;
-    font-size: larger;
-}
-.btn{
-    border: 0px;
-    background-color: #1abc9c;
-    color: white;
-    font-size: large;
-    font-weight: 500;
-    cursor: pointer;
-    width: 200px;
-    margin-top: 12px;
+.main {
+  max-width: 600px;
+  margin: 40px auto;
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
-.btn:hover{
-    transform: scale(1.05);
-    transition: all 0.3s ease-in-out;
-    background-color:#16a085 ;
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 26px;
+  color: #222;
 }
-.add-btn{
-    border: 1px solid black;
-    text-decoration: none;
-    color: black;
-    padding: 8px 24px;
-    font-weight: 500;
-    margin: 12px;
-    
 
-
-
+.btns {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 25px;
 }
-.add-btn:hover{
-    transform: scale(1.05);
-    transition: all 0.3s ease-in-out;
-    background-color: black;
-    color: white;
-    
+
+.add-btn {
+  padding: 10px 18px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 15px;
+  transition: background-color 0.2s ease;
 }
-.btns{
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 10px;
+
+.add-btn:hover {
+  background-color: #0056b3;
+}
+
+.add form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+label {
+  font-weight: bold;
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+input[type="submit"],
+.btn {
+  padding: 12px;
+  font-size: 16px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+input[type="submit"]:hover,
+.btn:hover {
+  background-color: #1e7e34;
 }

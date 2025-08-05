@@ -1,0 +1,48 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0px;
+  background: #f6f7fb;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  margin-top: 10px;
+  border-collapse: collapse;
+}
+
+table th, table td {
+  padding: 8px 12px;
+  border: 1px solid #aaa;
+  text-align: center;
+}
+.company-name {
+  font-style: italic;
+  color: gray;
+  margin-left: 5px;
+}
+
+form input[type="text"],
+form input[type="number"] {
+  padding: 6px;
+  margin-right: 10px;
+}
+
+button {
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: #3498db;
+  border: none;
+  color: white;
+  cursor: pointer;
+}

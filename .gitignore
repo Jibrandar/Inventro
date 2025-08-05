@@ -1,3 +1,7 @@
 node_modules/
 Inventra/
 dist/
+is.env/
+backup/
+config.json
+generate.js

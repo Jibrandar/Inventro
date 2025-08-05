@@ -16,11 +16,20 @@
     ],
     "files": [
       "views/**/*",
+      "backup/**",
+      "config.json",
       "public/**/*",
+      "utils/**/*",
       "main.js",
       "index.js",
       "package.json",
       "!node_modules/.cache/**"
+    ],
+    "extraResources": [
+      {
+        "from": "backup/credentials.json",
+        "to": "backup/credentials.json"
+      }
     ],
     "directories": {
       "buildResources": "assets"
@@ -43,9 +52,11 @@
   },
   "dependencies": {
     "ejs": "^3.1.10",
+    "electron-is-dev": "^3.0.1",
     "electron-updater": "^6.6.2",
     "express": "^5.1.0",
     "express-ejs-layouts": "^2.5.1",
+    "googleapis": "^154.1.0",
     "method": "^2.0.0",
     "method-override": "^3.0.0",
     "mysql2": "^3.14.1",

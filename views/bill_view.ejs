@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bill - <%= bill.customer_name %></title>
+  <link rel="stylesheet" href="/bill.css">
+</head>
+<body>
+  <nav style="display: flex; justify-content: space-between; align-items: center; padding: 15px 25px; background-color: #0d6efd; color: white; font-family: sans-serif;">
+  <!-- Left button -->
+  <div>
+    <a href="http://localhost:8080" style="text-decoration: none; background: white; color: #0d6efd; padding: 8px 16px; border-radius: 4px; font-weight: bold;">Dashboard</a>
+  </div>
+
+  <!-- Right button -->
+  <div>
+    <a href="http://localhost:8080/bills" style="text-decoration: none; background: white; color: #0d6efd; padding: 8px 16px; border-radius: 4px; font-weight: bold;">View bills</a>
+  </div>
+</nav>
+
+
+  <div class="bill-container">
+    <div class="header">
+      <div>
+        <h2> <%= localStoreName %></h2>
+        <p><strong>Customer:</strong> <%= bill.customer_name %></p>
+        <p><strong>Address:</strong> <%= bill.address %></p>
+        <p><strong>Phone Number:</strong> <%= bill.mobile %></p>
+      </div>
+      <div>
+        <p><strong>Date:</strong> <%= bill.date.toISOString().slice(0, 10) %></p>
+        <p><strong>Bill #:</strong> <%= bill.id %></p>
+      </div>
+    </div>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Qty</th>
+          <th>Price</th>
+          <th>Subtotal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% items.forEach(item => { %>
+          <tr>
+            <td><%= item.product_name %></td>
+            <td><%= item.quantity %></td>
+            <td>₹<%= item.price %></td>
+            <td>₹<%= item.quantity * item.price %></td>
+          </tr>
+        <% }); %>
+        <tr class="total-row">
+          <td colspan="3" style="text-align: right;"><strong>Total:</strong></td>
+          <td><strong>₹<%= bill.total %></strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="footer">
+      <p>Thank you for shopping with us!</p>
+      <p>This is a system-generated bill.</p>
+    </div>
+
+    <div style="text-align: center; margin-top: 20px;">
+      <button onclick="window.print()">🖨️ Print Bill</button>
+    </div>
+  </div>
+</body>
+</html>
