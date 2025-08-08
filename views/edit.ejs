@@ -25,8 +25,11 @@
             <input type="text" name="name" id="name" placeholder="name" value="<%= product.name %>">
             <label for="category">CATEGORY OF THE PRODUCT</label>
             <input type="text" value="<%= product.category %>" readonly>
-            <label for="price">PRICE OF THE PRODUCT</label>
+            <label for="price">Selling Price</label>
             <input type="number" name="price" id="price" placeholder="Price" value="<%= product.price %>">
+            <label>Cost Price </label>
+            <input type="number" name="cost_price" step="0.01" value="<%= product.cost_price %>" required />
+
             <label for="quantity">QUANTITY OF THE PRODUCT</label>
             <input type="number" name="quantity" id="quantity" placeholder="Quantity" value="<%= product.quantity %>">
             <input type="submit" value="EDIT">
