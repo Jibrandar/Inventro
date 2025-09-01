@@ -25,12 +25,7 @@
       "package.json",
       "!node_modules/.cache/**"
     ],
-    "extraResources": [
-      {
-        "from": "backup/credentials.json",
-        "to": "backup/credentials.json"
-      }
-    ],
+    
     "directories": {
       "buildResources": "assets"
     },

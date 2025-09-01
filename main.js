@@ -405,13 +405,13 @@ app.get("/add", (req, res) => {
 });
 
 app.post("/list", (req, res) => {
-  let { name, category, company, quantity, cost_price, price } = req.body;
+  let { name, category, company, quantity,shelf, cost_price, price } = req.body;
   let id = uuidv4();
   let q =
-    "insert into products(id,name,category,company,quantity,cost_price,price) values (?,?,?,?,?,?,?)";
+    "insert into products(id,name,category,company,quantity,shelf,cost_price,price) values (?,?,?,?,?,?,?,?)";
   connection.query(
     q,
-    [id, name, category, company, quantity, cost_price, price],
+    [id, name, category, company, quantity, shelf, cost_price, price],
     async (error, result) => {
       res.redirect("/list");
       try {
@@ -436,14 +436,14 @@ app.get("/edit/:id", (req, res) => {
 
 app.patch("/edit/:id", (req, res) => {
   let { id } = req.params;
-  let { name, price, cost_price, quantity } = req.body;
+  let { name, price, cost_price, quantity,shelf } = req.body;
   console.log(id);
 
   let q =
-    "update products set name =? ,price=?,cost_price=? ,quantity=? where id =?";
+    "update products set name =? ,price=?,cost_price=? ,quantity=?,shelf=? where id =?";
   connection.query(
     q,
-    [name, price, cost_price, quantity, id],
+    [name, price, cost_price, quantity,shelf, id],
     async (error, result) => {
       res.redirect("/list");
       try {

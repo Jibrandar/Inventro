@@ -45,6 +45,7 @@
                     <th>Category</th>
                     <th>Company</th>
                     <th>Qty</th>
+                    <th>Shelf</th>
                     <th>Price</th>
                 </tr>
                 <% for (product of products) { %>
@@ -53,6 +54,7 @@
                         <td><%= product.category %></td>
                         <td><%= product.company %></td>
                         <td><%= product.quantity %></td>
+                        <td><%= product.shelf %></td>
                         <td><%= product.price %></td>
                     </tr>
                     <% } %>

@@ -1,9 +1,15 @@
 
   @media print {
+    * {
+
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
   body {
     background: white;
     padding: 0;
     margin: 0;
+    
   }
 
   nav {
@@ -12,7 +18,7 @@
 
   .bill-container {
     box-shadow: none;
-    border: none;
+    
     padding: 0;
     max-width: 100%;
   }
