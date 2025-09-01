@@ -1,4 +1,4 @@
-# 📦 Malik Mobile Care - Product Inventory Dashboard
+ Product Inventory Dashboard
 
 A simple and modern product inventory management app built using **Node.js**, **Express**, **MySQL**, and **EJS**.  
 It allows you to track total products, low stock items, categories, and out-of-stock items with a clean dashboard UI.
